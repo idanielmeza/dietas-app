@@ -2,9 +2,15 @@ const Alimento = require('../models/alimento');
 
 const crearAlimento = async(req,res)=>{
 
-    const {nombre,proteina,carbohidrato,grasa,gramo} = req.body;
+    const {nombre,proteina,carbohidrato,grasa,gramo, ml} = req.body;
 
-    const alimento = new Alimento({nombre,proteina,carbohidrato,grasa,gramo});
+    const existe = Alimento.findOne({nombre});
+
+    if(existe){
+        return res.json({msg:'El alimento ya existe'});
+    }
+
+    const alimento = new Alimento({nombre,proteina,carbohidrato,grasa,gramo,ml});
 
     await alimento.save();
 

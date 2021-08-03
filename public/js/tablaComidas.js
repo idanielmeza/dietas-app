@@ -103,14 +103,14 @@ class TablaComidas{
             const alkcal = Number((alimento.porcion * (((Number(alimento.proteina) + Number(alimento.carbohidrato)) * 4) + (alimento.grasa * 9))).toFixed(2))
             const tr = document.createElement('tr');
             tr.innerHTML = `
-            <th>${alimento.nombre}<span class='text-muted'> (${Number(alimento.porcion * alimento.gramo).toFixed(2)} gr) </span></td>
+            <th>${alimento.nombre}<span class='text-muted'> (${Number(alimento.porcion * alimento.gramo).toFixed(2)} ${alimento.ml ? 'ml' : 'gr'}) </span></td>
             <td>${Number(alimento.proteina * alimento.porcion).toFixed(2)}</td>
             <td>${Number(alimento.carbohidrato * alimento.porcion).toFixed(2)}</td>
             <td>${Number(alimento.grasa * alimento.porcion).toFixed(2)}</td>
             <td>
                 <div class="input-group input-group-sm mb-3">
                     <input id="p-${numero}-${alimento._id}" type="number" class="form-control" min='0' step='1' style='max-width: 5em' value="${alimento.porcion}" onchange="tablaComidas.actualizarComida(this.id,this.value)">
-                    <span class="input-group-text">${alimento.gramo}gr</span>
+                    <span class="input-group-text">${alimento.gramo} ${alimento.ml ? 'ml' : 'gr'}</span>
                 </div>
             </td>
             <th>${alkcal}</th>
@@ -261,8 +261,6 @@ class TablaComidas{
     }
 
     actualizarComida(comida, porcion){
-
-        
         
         const [p,numero,id] = comida.split('-');
         

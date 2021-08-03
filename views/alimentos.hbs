@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+
+    <script>
+      const existe = localStorage.getItem('user-token');
+      if(!existe){
+        window.location = '/login';
+      }
+    </script>
+
+    <title>Agrega un alimento</title>
+</head>
+<body class='container mt-5'>
+
+    <divclass='d-grid' novalidate>
+      <h2 class='text-center'>Agrega un nuevo alimento</h2>
+            <div class="mb-3">
+              <label class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="nombre" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Proteina</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">gr</span>
+                <input type="number" class="form-control" id="proteina" aria-describedby="inputGroupPrepend" required>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Carbohidratos</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">gr</span>
+                <input type="number" class="form-control" id="carbos" aria-describedby="inputGroupPrepend" required>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Grasas</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">gr</span>
+                <input type="number" class="form-control" id="grasa" aria-describedby="inputGroupPrepend" required>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Porcion</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">gr</span>
+                <input type="number" class="form-control" id="gramo" aria-describedby="inputGroupPrepend" required>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Medida</label>
+              <select class="form-select" id="ml" required>
+                <option selected disabled value="">Seleccionar</option>
+                <option value='False'>gr</option>
+                <option value='True'>ml</option>
+              </select>
+            </div>
+            
+            <div class="d-flex align-items-end flex-column bd-highlight">
+                <button id='agregar' class="btn btn-dark" type="submit">Agregar</button>
+              </div>
+            </div>
+          </div>
+
+    <script src="./js/agregarAlimentos.js"></script>
+    
+</body>
+</html>

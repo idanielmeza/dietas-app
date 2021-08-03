@@ -24,6 +24,10 @@ const alimentoSchema = new Schema({
     },
     img:{
         type: String
+    },
+    ml:{
+        type: Boolean,
+        default: false
     }
 
 });

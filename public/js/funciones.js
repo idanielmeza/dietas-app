@@ -43,6 +43,7 @@ function calcularKcal(e){
     toggleFormualrio();
     comidasLocal();
 
+
 }
 
 function toggleFormualrio(){
@@ -163,7 +164,7 @@ function actualizarKcalRestantes(){
             <th scope="col">Proteina</th>
             <th scope="col">Carbos</th>
             <th scope="col">Grasas</th>
-            <th scope="col">${total.toFixed(2)} Kcal</th>
+            <th scope="col"><button type="button" class="btn btn-dark">Descargar</button></th>
             
         </tr>
 
@@ -172,6 +173,8 @@ function actualizarKcalRestantes(){
             <th scope="col">${prote.toFixed(2)}</th>
             <th scope="col">${carbos.toFixed(2)}</th>
             <th scope="col">${grasas.toFixed(2)}</th>
+            <th scope="col">${total.toFixed(2)} Kcal</th>
+            
         </tr>
 
         <tr>
@@ -183,6 +186,7 @@ function actualizarKcalRestantes(){
 
             <th scope="col">${ ((carbos * 400) / total).toFixed(2) }</th>
             <th scope="col">${ ((grasas * 400) / total).toFixed(2) }</th>
+            <th scope="col">100 %</th>
         </tr>
     </div>
     `;
@@ -209,39 +213,3 @@ async function guardarlocalStorage(){
     
 
 }
-
-// function descargarDieta(){
-
-//     window.jsPDF = window.jspdf.jsPDF;
-//     window.html2canvas = html2canvas;
-    
-
-//     const doc = new jsPDF('p', 'pt', 'a4');
-
-//     const elementHandler = {
-//         '#editor': function (element, renderer) {
-//           return true;
-//         }
-//       };
-
-//     const comidas = document.querySelector('#divComidas');
-//     const footer = document.querySelector('#btnDescargar');
-
-//     const div = document.createElement('div');
-//     div.appendChild(comidas)
-//     div.appendChild(footer);
-
-//     // doc.html(div,
-//     //     {
-//     //       'width': 180,'elementHandlers': elementHandler
-//     //     });
-    
-//     // doc.save(`Dieta.pdf`);
-
-//     doc.html(div, {
-//         callback: function(pdf) {
-//           pdf.save("Dieta.pdf");
-//         }
-//       });
-// }
-

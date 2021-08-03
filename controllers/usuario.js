@@ -27,16 +27,15 @@ const obtenerUsuario = (req, res)=>{
 
 const usuariosPost = async(req,res)=>{
     
-    const {nombre,correo,password,rol} = req.body;
+    const {nombre,correo,password} = req.body;
 
-    const usuario = new Usuario({nombre,correo,password,rol});
+    const usuario = new Usuario({nombre,correo,password});
 
     //Encrypter password
     const salt = bcryptjs.genSaltSync();
     usuario.password = bcryptjs.hashSync(password, salt);
 
     //Guardar en base de datos
-
     await usuario.save();
 
     res.status(201).json({

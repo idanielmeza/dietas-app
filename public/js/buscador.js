@@ -26,10 +26,10 @@ class Buscador{
         <div class='mt-2'>
             <nav class="bg-light d-flex align-items-center container">
                 <div class="container-fluid">
-                    <form class="d-flex">
+                    <div class="d-flex">
                     <input for='buscarBtn' id='buscarInput' class="form-control me-2" type="search" placeholder="Alimentos..." aria-label="Buscar">
-                    <button id='buscarBtn' onclick="buscador.buscarAlimentos()" class="btn btn-outline-dark" type="button">Buscar</button>
-                    </form>
+                    <button id='buscarBtn' name='buscarBtn' onclick="buscador.buscarAlimentos()" class="btn btn-outline-dark" type="button">Buscar</button>
+                    </div>
                 </div>
             </nav>
             <div id="divAlimento"></div>
@@ -79,13 +79,13 @@ class Buscador{
         lista.classList.add('list-group', 'list-group-flush','my-2');
     
         alimentos.forEach(alimento =>{
-            const {_id,nombre,proteina,carbohidrato,grasa, gramo} = alimento;
+            const {_id,nombre,proteina,carbohidrato,grasa, gramo, ml} = alimento;
             const elemento = document.createElement('li');
             elemento.classList.add('list-group-item');
     
             elemento.innerHTML= `
                 <div class="d-flex bd-highlight">
-                    <div class="p-2 w-100 bd-highlight"><h4 class='text-dark'>${nombre} <span class='text-muted'>(${gramo} grs)</span></h4></div>
+                    <div class="p-2 w-100 bd-highlight"><h4 class='text-dark'>${nombre} <span class='text-muted'>(${gramo} ${ ml ? 'ml' : 'gr'} )</span></h4></div>
                     <div class="p-2 flex-shrink-1 bd-highlight"><button id='${_id}' type="button" class="btn btn-dark" onclick='tablaComidas.agregarAlimento(${this.numero},this.id)'>+</button></div>
                 </div>
                 <div class="card-footer">

@@ -12,4 +12,17 @@ router.get('/', [
     return res.render('index');
 });
 
+router.get('/agregar-alimentos', [
+    // validarJWT
+    // ,validarCampos
+],(req, res) => {
+    return res.render('alimentos');
+});
+router.get('/singup', [
+    // validarJWT
+    // ,validarCampos
+],(req, res) => {
+    return res.render('singup');
+});
+
 module.exports = router;
