@@ -19,18 +19,17 @@ class TablaComidas{
     }
 
     comida(numero){
-
         const divTabla = document.createElement('div');
         divTabla.classList.add('card','mt-2');
-
+    
         const header = document.createElement('div');
         header.classList.add('card-header');
         header.innerHTML = `
         <div class="d-flex bd-highlight">
             <div class="p-2 w-100 bd-highlight">Comida #${numero}</div>
             <div class="d-flex bd-highlight">
-                <button id='tb-comida-${numero}' type="button" class="btn btn-dark" onclick="tablaComidas.ocultarComida(this.id)">+</button>
-                <button type="button" class="btn btn-dark mx-2" onclick="buscador.init(${numero}, this.parentElement.parentElement.parentElement.parentElement)">Buscador</button>
+                <button id='tb-comida-${numero}' type="button" class="btn" onclick="tablaComidas.ocultarComida(this.id)">+</button>
+                <button type="button" class="btn btn-primary mx-2" onclick="buscador.init(${numero}, this.parentElement.parentElement.parentElement.parentElement)">Buscador</button>
             </div>
         </div>
         `;
@@ -244,15 +243,13 @@ class TablaComidas{
     }
 
     ocultarComida(id){
+        
+        const [t,c,numero] = id.split('-');
 
-        const btn = document.getElementById(id);
+        const tabla = document.querySelector(`#comida${numero}`).parentElement.parentElement;
 
-        const parent = btn.parentElement.parentElement.parentElement.parentElement;
-
-        const tabla = parent.firstChild.nextSibling;
 
         if(tabla.classList.contains('buscador')){
-                
             tabla.nextSibling.classList.toggle('d-none');
         }
 
@@ -311,7 +308,7 @@ class TablaComidas{
             <th scope="col">Carbos</th>
             <th scope="col">Grasas</th>
             <th scope="col">0 Kcal</th>
-            <th scope="col"><button type="button" class="btn btn-dark">Descargar</button></th>
+            <th scope="col"><button type="button" class="btn btn-primary">Descargar</button></th>
         </tr>
 
         <tr>
@@ -330,7 +327,7 @@ class TablaComidas{
     </div>
         `;
 
-        document.body.appendChild(div);
+        divComidas.appendChild(div);
 
     }
 

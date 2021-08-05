@@ -4,9 +4,11 @@ const crearAlimento = async(req,res)=>{
 
     const {nombre,proteina,carbohidrato,grasa,gramo, ml} = req.body;
 
-    const existe = Alimento.findOne({nombre});
+    const existe = await Alimento.find({nombre});
 
-    if(existe){
+    console.log(existe);
+
+    if(existe.length != 0){
         return res.json({msg:'El alimento ya existe'});
     }
 

@@ -144,18 +144,11 @@ function actualizarKcalRestantes(){
         grasas += Number(alimento.porcion * alimento.grasa);
     })
 
+    div.innerHTML = `${total > kcal ? 'Te has excedido por: ' : 'Restantes :'}
+        <span ${total > kcal ? "class='text-danger text-uppercase'" : "class='text-primary text-uppercase'"}> ${total > kcal ? `${(total - kcal).toFixed(2)}` : `${(kcal - total).toFixed(2)}`} 
+        </span>kcal`;
 
-    if(total > kcal){
-        div.innerHTML = `
-            <span class='text-danger text-uppercase'>Te has excedido por : ${(total - kcal).toFixed(2)} kcal</span>
-        `;
-        return;
-    }
-
-    div.innerHTML = `
-    Calorias Restantes : <span class='text-danger'>${(kcal - total).toFixed(2)}</span> <span class='text-muted'>kcal.</span>
-    `;
-
+    
     document.querySelector('#btnDescargar').innerHTML = `
 
     <div class="card-body table-responsive align-items-center"><table class="table"><thead>
@@ -164,7 +157,7 @@ function actualizarKcalRestantes(){
             <th scope="col">Proteina</th>
             <th scope="col">Carbos</th>
             <th scope="col">Grasas</th>
-            <th scope="col"><button type="button" class="btn btn-dark">Descargar</button></th>
+            <th scope="col"><button type="button" class="btn btn-primary">Descargar</button></th>
             
         </tr>
 
@@ -173,7 +166,7 @@ function actualizarKcalRestantes(){
             <th scope="col">${prote.toFixed(2)}</th>
             <th scope="col">${carbos.toFixed(2)}</th>
             <th scope="col">${grasas.toFixed(2)}</th>
-            <th scope="col">${total.toFixed(2)} Kcal</th>
+            <th ${total > kcal ? 'class="text-danger"' : 'class="text-primary"'} scope="col">${total.toFixed(2)} Kcal</th>
             
         </tr>
 
@@ -185,7 +178,7 @@ function actualizarKcalRestantes(){
             </th>
 
             <th scope="col">${ ((carbos * 400) / total).toFixed(2) }</th>
-            <th scope="col">${ ((grasas * 400) / total).toFixed(2) }</th>
+            <th scope="col">${ ((grasas * 900) / total).toFixed(2) }</th>
             <th scope="col">100 %</th>
         </tr>
     </div>

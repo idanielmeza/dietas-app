@@ -28,7 +28,7 @@ class Buscador{
                 <div class="container-fluid">
                     <div class="d-flex">
                     <input for='buscarBtn' id='buscarInput' class="form-control me-2" type="search" placeholder="Alimentos..." aria-label="Buscar">
-                    <button id='buscarBtn' name='buscarBtn' onclick="buscador.buscarAlimentos()" class="btn btn-outline-dark" type="button">Buscar</button>
+                    <button id='buscarBtn' name='buscarBtn' onclick="buscador.buscarAlimentos()" class="btn btn-outline-primary" type="button">Buscar</button>
                     </div>
                 </div>
             </nav>
