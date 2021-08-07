@@ -14,8 +14,10 @@ const agregarAlimento = async()=>{
     const carbohidrato = document.querySelector('#carbos').value;
     const grasa = document.querySelector('#grasa').value;
     const gramo = document.querySelector('#gramo').value;
-    const ml = Boolean(document.querySelector('#ml').value);
+    const ml = document.querySelector('#ml').value;
 
+    console.log(JSON.parse(ml));
+    
     if(nombre == '' || proteina == '' || gramo == '' || carbohidrato == '' || grasa == '' || ml == '' || gramo == ''){
         alert('Todos los campos son obligatorios');
         return;
@@ -29,16 +31,12 @@ const agregarAlimento = async()=>{
         }
     });
 
-    const {alimento, msg} = resp.data;
+    const {msg} = resp.data;
 
     if(msg){
-
         alert('El alimento ya existe');
         return;
-
     }
-
-
 
     location.reload();
 }

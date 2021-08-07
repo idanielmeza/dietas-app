@@ -44,9 +44,6 @@ class TablaComidas{
         thead.innerHTML = `
             <tr>
                 <th scope="col">Nombre</th>
-                <th scope="col">Proteina</th>
-                <th scope="col">Carbos</th>
-                <th scope="col">Grasas</th>
                 <th scope="col">Porcion</th>
                 <th scope="col">Kcal</th>
                 <th scope="col">    </th>
@@ -58,9 +55,6 @@ class TablaComidas{
         const tfoot = document.createElement('tfoot');
         tfoot.innerHTML= `
             <th scope="col">Total</th>
-            <th scope="col">0 gr</th>
-            <th scope="col">0 gr</th>
-            <th scope="col">0 gr</th>
             <th scope="col"></th>
             <th scope="col">0 Kcal</th>
         `
@@ -103,19 +97,27 @@ class TablaComidas{
             const tr = document.createElement('tr');
             tr.innerHTML = `
             <th>${alimento.nombre}<span class='text-muted'> (${Number(alimento.porcion * alimento.gramo).toFixed(2)} ${alimento.ml ? 'ml' : 'gr'}) </span></td>
-            <td>${Number(alimento.proteina * alimento.porcion).toFixed(2)}</td>
-            <td>${Number(alimento.carbohidrato * alimento.porcion).toFixed(2)}</td>
-            <td>${Number(alimento.grasa * alimento.porcion).toFixed(2)}</td>
             <td>
                 <div class="input-group input-group-sm mb-3">
-                    <input id="p-${numero}-${alimento._id}" type="number" class="form-control" min='0' step='1' style='max-width: 5em' value="${alimento.porcion}" onchange="tablaComidas.actualizarComida(this.id,this.value)">
+                    <input id="p-${numero}-${alimento._id}" type="number" class="form-control" min='0' step='1' style='max-width: 4rem' value="${alimento.porcion}" onchange="tablaComidas.actualizarComida(this.id,this.value)">
                     <span class="input-group-text">${alimento.gramo} ${alimento.ml ? 'ml' : 'gr'}</span>
+                </div>
+                <div class='d-flex'>
+                    <p >
+                        <p class='flex-sm-column mx-2'>P: <span class='text-primary'>${Number(alimento.proteina * alimento.porcion).toFixed(2)}</span> gr </p>
+                        <p class='flex-sm-column'>C: <span class='text-primary'>${Number(alimento.carbohidrato * alimento.porcion).toFixed(2)}</span> gr</p>
+                        <p class='flex-sm-column mx-2'>G: <span class='text-primary'>${Number(alimento.grasa * alimento.porcion).toFixed(2)}</span> gr</p>
+                    </p>
                 </div>
             </td>
             <th>${alkcal}</th>
-            <tr>
+            <td>
                 <button id='${numero}-${alimento._id}' type="button" class='btn btn-outline-danger mx-2' onclick="tablaComidas.eliminarAlimento(this.id)">x</button>
-            </tr>`;
+            </td>
+            
+            `;
+            
+            
             tabla.appendChild(tr)
 
             proteina += alimento.porcion * alimento.proteina;
@@ -132,10 +134,13 @@ class TablaComidas{
 
         footer.innerHTML = `
         <th scope="col">Total</th>
-        <th scope="col">${Number(proteina.toFixed(2))} gr</th>
-        <th scope="col">${Number(carbos.toFixed(2))} gr</th>
-        <th scope="col">${Number(grasas.toFixed(2))} gr</th>
-        <th scope="col"></th>
+        <th scope="col">
+            <div class='d-flex'>
+                <p class='flex-sm-column mx-2'>P: <span class='text-primary'>${Number(proteina.toFixed(2))}</span> gr</p>
+                <p class='flex-sm-column'>C: <span class='text-primary'>${Number(carbos.toFixed(2))}</span> gr</p>
+                <p class='flex-sm-column mx-2'>G: <span class='text-primary'>${Number(grasas.toFixed(2))}</span> gr</p>   
+            </div>
+        </th>
         <th scope="col">${Number(kcal.toFixed(2))} Kcal</th>`;
 
     }

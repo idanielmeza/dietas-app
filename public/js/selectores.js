@@ -19,7 +19,6 @@ const objetivoInput = document.querySelector('#objetivo');
 let kcal;
 let usuario;
 
-
 //Spinner
 
 const spinner = document.createElement('div');

@@ -40,9 +40,8 @@ function calcularKcal(e){
     contenedorKcal.appendChild(divInformacionKcal);
     
     tablaComidas.init();
-    toggleFormualrio();
     comidasLocal();
-
+    toggleFormualrio();
 
 }
 
@@ -82,7 +81,7 @@ function cerrarSesion(){
 
 function comidasLocal(){
 
-    const {comida:comidastr} = usuario;
+    const {comida:comidastr} = usuario.comida ? usuario : usuario.data;
 
     const comida = JSON.parse(comidastr);
 
@@ -157,7 +156,6 @@ function actualizarKcalRestantes(){
             <th scope="col">Proteina</th>
             <th scope="col">Carbos</th>
             <th scope="col">Grasas</th>
-            <th scope="col"><button type="button" class="btn btn-primary">Descargar</button></th>
             
         </tr>
 

@@ -6,13 +6,13 @@ document.addEventListener('DOMContentLoaded', async()=>{
 
     calcular.addEventListener('click',calcularKcal )
 
-    const {data,..._} = await axios({
+    const resp = await axios({
         method: 'get',
         url: '/api/usuario',
         headers: {'user-token': localStorage.getItem('user-token')}
     });
 
-    usuario=data;
+    usuario=resp.data;
 
     if(usuario.edad){
         estaturaInput.value = usuario.estatura;
