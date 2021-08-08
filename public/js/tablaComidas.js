@@ -1,9 +1,4 @@
-//Comidas
-let comida1=[];
-let comida2=[];
-let comida3=[];
-let comida4=[];
-let comida5=[];
+
 
 class TablaComidas{
 
@@ -102,11 +97,11 @@ class TablaComidas{
                     <input id="p-${numero}-${alimento._id}" type="number" class="form-control" min='0' step='1' style='max-width: 4rem' value="${alimento.porcion}" onchange="tablaComidas.actualizarComida(this.id,this.value)">
                     <span class="input-group-text">${alimento.gramo} ${alimento.ml ? 'ml' : 'gr'}</span>
                 </div>
-                <div class='d-flex'>
+                <div class='d-flex flex-wrap'>
                     <p >
-                        <p class='flex-sm-column mx-2'>P: <span class='text-primary'>${Number(alimento.proteina * alimento.porcion).toFixed(2)}</span> gr </p>
-                        <p class='flex-sm-column'>C: <span class='text-primary'>${Number(alimento.carbohidrato * alimento.porcion).toFixed(2)}</span> gr</p>
-                        <p class='flex-sm-column mx-2'>G: <span class='text-primary'>${Number(alimento.grasa * alimento.porcion).toFixed(2)}</span> gr</p>
+                        <p class='mx-2'>P: <span class='text-primary'>${Number(alimento.proteina * alimento.porcion).toFixed(2)}</span> gr </p>
+                        <p class='mx-2'>C: <span class='text-primary'>${Number(alimento.carbohidrato * alimento.porcion).toFixed(2)}</span> gr</p>
+                        <p class='mx-2'>G: <span class='text-primary'>${Number(alimento.grasa * alimento.porcion).toFixed(2)}</span> gr</p>
                     </p>
                 </div>
             </td>
@@ -135,10 +130,10 @@ class TablaComidas{
         footer.innerHTML = `
         <th scope="col">Total</th>
         <th scope="col">
-            <div class='d-flex'>
-                <p class='flex-sm-column mx-2'>P: <span class='text-primary'>${Number(proteina.toFixed(2))}</span> gr</p>
-                <p class='flex-sm-column'>C: <span class='text-primary'>${Number(carbos.toFixed(2))}</span> gr</p>
-                <p class='flex-sm-column mx-2'>G: <span class='text-primary'>${Number(grasas.toFixed(2))}</span> gr</p>   
+            <div class='d-flex flex-wrap'>
+                <p class='mx-2'> P: <span class='text-primary'>${Number(proteina.toFixed(2))}</span>gr </p>
+                <p class='mx-2'> C: <span class='text-primary'>${Number(carbos.toFixed(2))}</span>gr </p>
+                <p class='mx-2'> G: <span class='text-primary'>${Number(grasas.toFixed(2))}</span>gr </p>   
             </div>
         </th>
         <th scope="col">${Number(kcal.toFixed(2))} Kcal</th>`;

@@ -18,6 +18,12 @@ const objetivoInput = document.querySelector('#objetivo');
 //Varibales
 let kcal;
 let usuario;
+//Comidas
+let comida1=[];
+let comida2=[];
+let comida3=[];
+let comida4=[];
+let comida5=[];
 
 //Spinner
 

@@ -35,7 +35,7 @@ function calcularKcal(e){
     const divInformacionKcal = document.createElement('div');
     divInformacionKcal.id = 'kcalRestantes';
     divInformacionKcal.classList.add('card-header', 'text-center', 'text-dark');
-    divInformacionKcal.innerHTML =  `Calorias Restantes : <span class='text-danger'>${kcal.toFixed(2)}</span> <span class='text-muted'>kcal.</span>`;
+    divInformacionKcal.innerHTML =  `Calorias Restantes : <span class='text-primary'>${kcal.toFixed(2)}</span> <span class='text-muted'>kcal.</span>`;
 
     contenedorKcal.appendChild(divInformacionKcal);
     
@@ -203,4 +203,17 @@ async function guardarlocalStorage(){
 
     
 
+}
+
+function reiniciar(){
+
+    comida1 = [];
+    comida2 = comida1;
+    comida3 = comida1;
+    comida4 = comida1;
+    comdia5 = comida1;
+
+    guardarlocalStorage();
+
+    location.reload();
 }

@@ -38,5 +38,5 @@ const agregarAlimento = async()=>{
         return;
     }
 
-    location.reload();
+    document.querySelector('form').reset();
 }

@@ -77,7 +77,8 @@ class Buscador{
     
         const lista = document.createElement('ul');
         lista.classList.add('list-group', 'list-group-flush','my-2');
-    
+
+        
         alimentos.forEach(alimento =>{
             const {_id,nombre,proteina,carbohidrato,grasa, gramo, ml} = alimento;
             const elemento = document.createElement('li');
@@ -96,6 +97,12 @@ class Buscador{
             lista.appendChild(elemento);
     
         })
+
+        if(alimentos.length === 0){
+
+            lista.innerHTML = `<p class='text-muted text-center'>No se encontraron alimentos</p>`;
+
+        }
 
         divAlimento.appendChild(lista);
         this.divBuscador.appendChild(divAlimento);

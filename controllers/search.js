@@ -6,7 +6,7 @@ const buscarAlimento = async(req, res)=>{
 
     const regex = new RegExp(busqueda,'i');
 
-    const alimentos = await Alimento.find({nombre:regex});
+    const alimentos = await Alimento.find({nombre:regex}).limit(5);
 
     res.status(200).json({
         resultados:[alimentos]
