@@ -211,7 +211,7 @@ function reiniciar(){
     comida2 = comida1;
     comida3 = comida1;
     comida4 = comida1;
-    comdia5 = comida1;
+    comida5 = comida1;
 
     guardarlocalStorage();
 
