@@ -84,7 +84,7 @@ class Buscador{
             elemento.innerHTML= `
                 <div class="d-flex bd-highlight">
                     <div class="p-2 w-100 bd-highlight"><h4 class='text-dark'>${nombre} <span class='text-muted'>(${gramo} ${ ml ? 'ml' : 'gr'} )</span></h4></div>
-                    <div class="p-2 flex-shrink-1 bd-highlight"><button id='${_id}' type="button" class="btn btn-dark" onclick='tablaComidas.agregarAlimento(${this.numero},this.id)'>+</button></div>
+                    <div class="p-2 flex-shrink-1 bd-highlight"><button id='${_id}' type="button" class="btn btn-dark" onclick='tablaComidas.agregarAlimento(${id},this.id)'>+</button></div>
                 </div>
                 <div class="card-footer">
                     Proteina: ${proteina} gr - Carbohidratos: ${carbohidrato} gr - Grasas: ${grasa} gr
