@@ -1,66 +1,63 @@
 
 class Buscador{
     
-    constructor(){
-        this.numero;
-        this.divBuscador;
-    }
 
     init(id, div){
 
-        const existe = document.querySelector('.buscador');
+        const existe = document.querySelector(`#buscador${id}`);
         
         if(existe){
             existe.remove();
             return;
         }
 
-        this.numero = id;
 
-        this.divBuscador = document.createElement('div');
-        this.divBuscador.classList.add('buscador');
+        const divBuscador = document.createElement('div');
+        divBuscador.id = `buscador${id}`;
 
-        div.insertBefore(this.divBuscador, div.firstChild.nextSibling);
+        div.insertBefore(divBuscador, div.firstChild.nextSibling);
 
-        this.divBuscador.innerHTML = `
+        divBuscador.innerHTML = `
         <div class='mt-2'>
             <nav class="bg-light d-flex align-items-center container">
                 <div class="container-fluid">
                     <div class="d-flex">
-                    <input for='buscarBtn' id='buscarInput' class="form-control me-2" type="search" placeholder="Alimentos..." aria-label="Buscar">
-                    <button id='buscarBtn' name='buscarBtn' onclick="buscador.buscarAlimentos()" class="btn btn-outline-primary" type="button">Buscar</button>
+                    <input for='buscarBtn' id='buscarInput${id}' class="form-control me-2" type="search" placeholder="Alimentos..." aria-label="Buscar">
+                    <button id='buscarBtn-${id}' name='buscarBtn' onclick="buscador.buscarAlimentos(this.id)" class="btn btn-outline-primary" type="button">Buscar</button>
                     </div>
                 </div>
             </nav>
-            <div id="divAlimento"></div>
+            <div id="divAlimento${id}"></div>
         </div>`;
     }
 
-    async buscarAlimentos(){
+    async buscarAlimentos(buscador){
 
-        const busqueda = document.querySelector('#buscarInput').value;
+        const [b,id] = buscador.split('-');
+
+        const busqueda = document.querySelector(`#buscarInput${id}`).value;
 
         if(busqueda === ''){
             return alert('Los alimentos se buscan por nombre');
         }
 
-        const divAlimento = document.querySelector('#divAlimento');
+        const divAlimento = document.querySelector(`#divAlimento${id}`);
 
         divAlimento.appendChild(spinner);
         
         const {data:alimentos, ..._} = await axios.post('/api/search', {busqueda})
 
-        this.agregarALista(alimentos.resultados[0]);
+        this.agregarALista(alimentos.resultados[0],id);
 
         
 
     }
 
-    agregarALista(alimentos) {
+    agregarALista(alimentos,id) {
 
-        document.querySelector('#buscarInput').value = '';
+        document.querySelector(`#buscarInput${id}`).value = '';
 
-        const divAlimento = document.querySelector('#divAlimento');
+        const divAlimento = document.querySelector(`#divAlimento${id}`);
 
         while(divAlimento.firstChild){
             divAlimento.removeChild(divAlimento.firstChild);
@@ -104,8 +101,10 @@ class Buscador{
 
         }
 
+        const divBuscador = document.querySelector(`#buscador${id}`);
+
         divAlimento.appendChild(lista);
-        this.divBuscador.appendChild(divAlimento);
+        divBuscador.appendChild(divAlimento);
     
     }
 

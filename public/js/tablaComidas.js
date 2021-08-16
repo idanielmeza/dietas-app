@@ -67,7 +67,6 @@ class TablaComidas{
     
     limpiarHTML(){
 
-
         while(divComidas.firstChild){
             divComidas.removeChild(divComidas.firstChild);
         }
@@ -246,10 +245,17 @@ class TablaComidas{
         const [t,c,numero] = id.split('-');
 
         const tabla = document.querySelector(`#comida${numero}`).parentElement.parentElement;
+        
+        const buscador = document.querySelector(`#buscador${numero}`);
 
+        console.log(buscador);
+        
+        if(buscador && tabla.classList.contains('d-none')){
 
-        if(tabla.classList.contains('buscador')){
-            tabla.nextSibling.classList.toggle('d-none');
+            buscador.classList.remove('d-none');
+
+        }else if(buscador && !tabla.classList.contains('d-none')){
+            buscador.classList.add('d-none');
         }
 
         tabla.classList.toggle('d-none')
