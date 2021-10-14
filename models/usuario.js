@@ -44,7 +44,6 @@ const usuarioSchema = new Schema({
     },
     comida:{
         type: String,
-        default: ''
     }
 
 });

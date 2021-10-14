@@ -2,11 +2,11 @@ const Alimento = require('../models/alimento');
 
 const crearAlimento = async(req,res)=>{
 
+    console.log(req.body);
+
     const {nombre,proteina,carbohidrato,grasa,gramo, ml} = req.body;
 
     const existe = await Alimento.find({nombre});
-
-    console.log(existe);
 
     if(existe.length != 0){
         return res.json({msg:'El alimento ya existe'});

@@ -1,7 +1,11 @@
 const Usuario = require('../models/usuario');
 const bcryptjs = require('bcryptjs');
+const { generarJWT } = require('../helpers/generar-jwt');
+
 
 const acutalizarUsuario = async(req, res)=>{
+
+    console.log(req);
 
     const {_id} = req.usuario;
 
@@ -18,9 +22,15 @@ const acutalizarUsuario = async(req, res)=>{
     
 }
 
-const obtenerUsuario = (req, res)=>{
+const obtenerUsuario = async(req, res)=>{
 
-    res.json(req.usuario);
+    const usuario = req.usuario;
+
+    const token = await generarJWT(usuario.id);
+    res.json({
+        usuario,
+        token
+    });
 
 }
 
@@ -38,8 +48,12 @@ const usuariosPost = async(req,res)=>{
     //Guardar en base de datos
     await usuario.save();
 
+    //Generar JWT
+    const token = await generarJWT(usuario.id);
+
     res.status(201).json({
-        usuario
+        usuario,
+        token
     });
 };
 
@@ -51,7 +65,7 @@ const actualizarComida = async(req, res)=>{
 
     const usuario = await Usuario.findByIdAndUpdate(_id,{comida: JSON.stringify(comida)});
 
-    res.status(201).json(usuario);
+    res.status(201).json(usuario.comida);
 
 }
 

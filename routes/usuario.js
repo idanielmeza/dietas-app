@@ -11,7 +11,7 @@ router.put('/', validarJWT ,acutalizarUsuario);
 
 router.put('/comida', validarJWT ,actualizarComida);
 
-router.get('/', validarJWT , obtenerUsuario)
+router.get('/', validarJWT , obtenerUsuario);
 
 router.post('/', [
     check('nombre','El nombre es obligatorio').not().isEmpty(),

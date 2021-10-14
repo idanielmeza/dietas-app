@@ -37,7 +37,7 @@ class Server{
 
         //cors
         // this.app.use(cors());
-        this.app.set('view engine', 'hbs');
+        // this.app.set('view engine', 'hbs');
 
         //Lectura y parseo del body
         this.app.use(express.json());
@@ -52,9 +52,9 @@ class Server{
         // this.app.use(this.paths.auth,require('../routes/auth'));
         this.app.use(this.paths.alimentos,require('../routes/alimentos'));
         this.app.use(this.paths.search,require('../routes/search'));
-        this.app.use(this.paths.login,require('../routes/login'));
+        // this.app.use(this.paths.login,require('../routes/login'));
         this.app.use(this.paths.auth,require('../routes/auth'));
-        this.app.use(this.paths.index,require('../routes/principal'));
+        // this.app.use(this.paths.index,require('../routes/principal'));
         this.app.use(this.paths.usuario,require('../routes/usuario'));
         
     }
