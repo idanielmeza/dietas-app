@@ -36,7 +36,7 @@ class Server{
     middlewares(){
 
         //cors
-        // this.app.use(cors());
+        this.app.use(cors());
         // this.app.set('view engine', 'hbs');
 
         //Lectura y parseo del body
