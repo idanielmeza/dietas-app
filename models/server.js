@@ -1,6 +1,6 @@
 const express = require('express');
-const cors = require('cors');
-const hbs = require('hbs');
+// const cors = require('cors');
+// const hbs = require('hbs');
 const {dbConnection} = require('../db/config');
 
 
